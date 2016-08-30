@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <!--
+    This file needs to be running under the control of a Web server to work. It won't work
+    loaded as a local browser file (this is a Google map API licensing issue).
+    The file must be running under the Web site URL corresponding to the
+    Google map API key.
+    -->
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>Google map demo</title>
+
+    <style type="text/css">
+        body {
+            font-family: verdana, arial;
+        }
+        h2 {
+            font-size: 1.2em;
+        }
+        .wideTextBox{
+            width: 300px;
+        }
+        #showMap {
+            margin-top: 16px;
+        }
+
+        input[type="text"] {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Demonstrate the Google map API with jQuery and jQuery UI</h2>
+
+    Map title text:<br/>
+    <input type="text" id="titleText"    class="wideTextBox" value="ASNA US office"/><br/>
+    Address1:<br/>
+    <input type="text" id="address1" class="wideTextBox" value="9901 West IH 10"/><br/>
+    Address2:<br/>
+    <input type="text" id="address2" class="wideTextBox" value=""/><br/>
+    City:<br/>
+    <input type="text" id="city" class="wideTextBox" value="San Antonio"/><br/>
+    Region/State:<br/>
+    <input type="text" id="region" class="wideTextBox" value="TX"/><br/>
+    Postal code:<br/>
+    <input type="text" id="postalCode" class="wideTextBox" value="78230"/><br/>
+
+    <input type="button" id="showMap" value="Show map"/>
+</body>
+
+<!-- Load jQuery and jQueryUI from Google CDN. Alternative you could download it and store it locally.
+www.jquery.com
+www.jqueryUI.com
+-->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+<link   type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/themes/smoothness/jquery-ui.css" rel="stylesheet"></link>
+
+<!-- Use your Google API key!
+Get one here:
+http://code.google.com/apis/maps/signup.html
+For development purposes, use http://localhost as your Website URL.
+For production purposes, your customer will need her own API key.
+-->
+<!-- <script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApXg2c2mta18soD26a9FtrxT2yXp_ZAY8_ufC3CFXhHIE1NvwkxR3N3LkeDDzkxJYRt7DQv5_xtEY7g"></script> -->
+<!-- <script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyA2atJosYcmEs3VvnQ89yvGbF-6s_azSeY"></script> -->
+<script type="text/javascript" src="http://maps.google.com/maps?file=api&v=2&key=AIzaSyA2atJosYcmEs3VvnQ89yvGbF-6s_azSeY"></script>
+<script type="text/javascript" src="rp.GoogleMap.js"></script>
+
+<!-- Get the jQuery Gmap plugin This saves you tons of work. Highly recommended!
+Download jquery.gmap.1.10.min.js here:
+http://plugins.jquery.com/project/gmap
+-->
+<script type="text/javascript" src="jquery.gmap-1.1.0-min.js"></script>
+
+<script type="text/javascript">
+$( "#showMap" ).click( function() {
+    rp.GoogleMap.setTitleText(  $( "#titleText" ).val() );
+    rp.GoogleMap.appendAddress( $( "#address1" ).val() );
+    rp.GoogleMap.appendAddress( $( "#address2" ).val() );
+    rp.GoogleMap.appendRegion( $( "#city" ).val() );
+    rp.GoogleMap.appendRegion( $( "#region" ).val() );
+    rp.GoogleMap.appendRegion( $( "#postalCode" ).val() );
+
+    rp.GoogleMap.show();
+});
+</script>
+
+</html>
+
